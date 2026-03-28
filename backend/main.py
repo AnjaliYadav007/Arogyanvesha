@@ -208,15 +208,15 @@ async def analyze_symptoms(req: AnalyzeRequest):
         raw_text = response.text.strip()
 
         # JSON parse karo
-        import json
-        # Remove markdown code blocks if present
-        if raw_text.startswith("```"):
-            raw_text = raw_text.split("```")[1]
-            if raw_text.startswith("json"):
-                raw_text = raw_text[4:]
-        raw_text = raw_text.strip()
+        import json as json_lib
+# Remove markdown code blocks if present
+if raw_text.startswith("```"):
+    raw_text = raw_text.split("```")[1]
+    if raw_text.startswith("json"):
+        raw_text = raw_text[4:]
+raw_text = raw_text.strip()
 
-        data = json.loads(raw_text)
+data = json_lib.loads(raw_text)
 
         treatment_card = TreatmentCard(
             disease_name=data.get("disease_name", ""),
