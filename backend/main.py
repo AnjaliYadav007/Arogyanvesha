@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
 import google.generativeai as genai
+from google.generativeai import types
 import os
 
 # ── App Setup ──────────────────────────────────────────────
@@ -24,7 +25,7 @@ app.add_middleware(
 # ── Gemini Setup ────────────────────────────────────────────
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel("gemini-1.5-flash")
+model = genai.GenerativeModel("gemini-2.0-flash")
 
 # ── Request/Response Models ─────────────────────────────────
 class AnalyzeRequest(BaseModel):
