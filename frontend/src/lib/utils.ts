@@ -32,14 +32,32 @@ export function getDoshaBg(dosha: Dosha): string {
 }
 
 // TODO: Connect FastAPI backend — replace this with real API call
-export async function analyzeSymptoms(formData: unknown): Promise<AnalysisResult> {
-  // TODO: Send symptoms to API
-  // const res = await fetch('/api/analyze', { method: 'POST', body: JSON.stringify(formData) });
-  // return res.json();
+export async function analyzeSymptoms(formData: any): Promise<AnalysisResult> {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/analyze`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          symptoms: formData.symptoms || [],
+        }),
+      }
+    );
 
-  // Dummy response for UI demo
-  await new Promise((r) => setTimeout(r, 2800));
-  return DUMMY_RESULT;
+    if (!res.ok) {
+      const errorText = await res.text();
+      console.error("Backend error:", errorText);
+      throw new Error('API request failed');
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
 }
 
 // Dummy result for UI demonstration
