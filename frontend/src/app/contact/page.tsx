@@ -1,8 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import type { ContactFormData, LoadingState } from '@/types';
+import type { AnalysisFormData, LoadingState } from '@/types';
 import Button from '@/components/Button';
+
+interface ContactFormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
 
 export default function ContactPage() {
   const [form, setForm] = useState<ContactFormData>({
@@ -10,7 +17,9 @@ export default function ContactPage() {
   });
   const [state, setState] = useState<LoadingState>('idle');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -27,97 +36,190 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen pt-28 pb-20">
-      <div className="section-container">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-glass border-gold-subtle mb-4">
-            <span className="font-josefin text-xs tracking-[0.3em] uppercase text-gold-400">Get in Touch</span>
+          <div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4"
+            style={{
+              background: 'rgba(212, 175, 55, 0.08)',
+              border: '1px solid rgba(212, 175, 55, 0.25)',
+            }}
+          >
+            <span className="font-display text-xs tracking-widest" style={{ color: '#D4AF37' }}>
+              SUPPORT & FEEDBACK
+            </span>
           </div>
-          <h1 className="font-cinzel font-black text-5xl md:text-6xl text-gold-gradient">Contact Us</h1>
-          <p className="font-cormorant text-parchment-400 text-xl max-w-xl mx-auto leading-relaxed">
-            Questions, feedback, collaboration enquiries — we would love to hear from you.
+          <h1 className="font-display text-5xl md:text-6xl gold-text-gradient">Contact Us</h1>
+          <p className="font-lora text-amber-100/60 text-xl max-w-xl mx-auto leading-relaxed">
+            We&apos;re here to help. Whether you&apos;ve hit a bug, have an idea, or simply want
+            to share feedback — reach out and we&apos;ll get back to you promptly.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 max-w-5xl mx-auto">
-          {/* Info Panel */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+
+          {/* Left panel */}
           <div className="lg:col-span-2 space-y-6">
-            <div className="card-base space-y-5">
-              <h3 className="font-cinzel font-semibold text-gold-300 text-lg">Project Information</h3>
-              {[
-                { icon: '🏛️', label: 'Institution', value: 'Buddha Institute of Technology GIDA, Gorakhpur' },
-                { icon: '📚', label: 'Programme', value: 'B.Tech — Data Science (CS & Allied)' },
-                { icon: '🎓', label: 'University', value: 'Dr. A.P.J. Abdul Kalam Technical University, UP' },
-                { icon: '👨‍🏫', label: 'Supervisor', value: 'Mr. Anurag Tripathi, Assistant Professor' },
-                { icon: '📅', label: 'Session', value: 'March 2026 — Major Project' },
-              ].map((info) => (
-                <div key={info.label} className="flex items-start gap-3">
-                  <span className="text-xl flex-shrink-0">{info.icon}</span>
-                  <div>
-                    <p className="font-josefin text-[9px] tracking-widest uppercase text-parchment-600 mb-0.5">{info.label}</p>
-                    <p className="font-cormorant text-parchment-300 text-base">{info.value}</p>
-                  </div>
-                </div>
-              ))}
+
+            {/* About the project */}
+            <div
+              className="rounded-xl p-6 space-y-4"
+              style={{
+                background: 'rgba(107, 26, 42, 0.25)',
+                border: '1px solid rgba(212, 175, 55, 0.15)',
+              }}
+            >
+              <div className="flex items-center gap-3 mb-2">
+                <span className="text-xl">🌿</span>
+                <h3 className="font-display text-base tracking-wider" style={{ color: '#E8CC6A' }}>
+                  About Arogyanvesha
+                </h3>
+              </div>
+              <p className="font-lora text-amber-100/60 text-sm leading-relaxed">
+                Arogyanvesha is an AI-powered Ayurvedic health platform that analyses your symptoms
+                and delivers personalised treatment plans — covering herbal remedies, diet, yoga,
+                and lifestyle guidance — rooted in classical Ayurvedic texts.
+              </p>
+              <p className="font-lora text-amber-100/45 text-sm leading-relaxed">
+                Our goal is to make authentic, Prakriti-personalised Ayurvedic care accessible to
+                everyone, anywhere, at any time.
+              </p>
             </div>
 
-            <div className="card-base">
-              <h3 className="font-cinzel font-semibold text-gold-300 text-base mb-4">Reach Out For</h3>
-              <ul className="space-y-2">
+            {/* Contact reasons */}
+            <div
+              className="rounded-xl p-6"
+              style={{
+                background: 'rgba(107, 26, 42, 0.25)',
+                border: '1px solid rgba(212, 175, 55, 0.15)',
+              }}
+            >
+              <h3
+                className="font-display text-sm tracking-wider mb-5"
+                style={{ color: '#E8CC6A' }}
+              >
+                CONTACT US IF YOU&apos;RE
+              </h3>
+              <ul className="space-y-3">
                 {[
-                  'Project collaboration & partnerships',
-                  'Academic research enquiries',
-                  'Bug reports & feedback',
-                  'AI/ML technical discussions',
-                  'Ayurvedic content contributions',
+                  { icon: '⚠️', text: 'Facing an issue while using the platform' },
+                  { icon: '🐛', text: 'Reporting a bug or unexpected error' },
+                  { icon: '💡', text: 'Requesting a feature or improvement' },
+                  { icon: '📝', text: 'Sharing feedback on your experience' },
+                  { icon: '🤝', text: 'Interested in partnering or collaborating' },
                 ].map((item) => (
-                  <li key={item} className="font-cormorant text-parchment-400 text-base flex items-start gap-2">
-                    <span className="text-gold-500 mt-0.5">→</span>
-                    {item}
+                  <li key={item.text} className="flex items-start gap-3">
+                    <span className="text-base mt-0.5 flex-shrink-0">{item.icon}</span>
+                    <span className="font-lora text-amber-100/60 text-sm leading-snug">
+                      {item.text}
+                    </span>
                   </li>
                 ))}
               </ul>
             </div>
+
+            {/* Response time note */}
+            <div
+              className="rounded-xl px-5 py-4 flex items-start gap-3"
+              style={{
+                background: 'rgba(212, 175, 55, 0.06)',
+                border: '1px solid rgba(212, 175, 55, 0.12)',
+              }}
+            >
+              <span className="text-base mt-0.5">⏱</span>
+              <p className="font-lora text-amber-100/50 text-sm leading-relaxed">
+                We typically respond within <span style={{ color: '#D4AF37' }}>24–48 hours</span>.
+                For urgent issues, please describe the problem in detail so we can assist faster.
+              </p>
+            </div>
           </div>
 
-          {/* Form */}
+          {/* Contact form */}
           <div className="lg:col-span-3">
             {state === 'success' ? (
-              <div className="card-base text-center space-y-6 py-16">
-                <div className="w-20 h-20 rounded-full bg-gold-500/15 border border-gold-500/30 flex items-center justify-center mx-auto text-4xl">
+              <div
+                className="rounded-xl text-center space-y-6 py-16 px-8"
+                style={{
+                  background: 'rgba(107, 26, 42, 0.25)',
+                  border: '1px solid rgba(212, 175, 55, 0.15)',
+                }}
+              >
+                <div
+                  className="w-20 h-20 rounded-full flex items-center justify-center mx-auto text-3xl"
+                  style={{
+                    background: 'rgba(212, 175, 55, 0.1)',
+                    border: '1px solid rgba(212, 175, 55, 0.3)',
+                  }}
+                >
                   ✓
                 </div>
-                <h3 className="font-cinzel font-bold text-2xl text-gold-300">Message Sent!</h3>
-                <p className="font-cormorant text-parchment-400 text-lg max-w-sm mx-auto">
-                  Thank you for reaching out. We will respond to your message shortly.
+                <h3 className="font-display text-2xl" style={{ color: '#E8CC6A' }}>
+                  Message Received
+                </h3>
+                <p className="font-lora text-amber-100/55 text-lg max-w-sm mx-auto leading-relaxed">
+                  Thank you for writing in. Our team will review your message and respond within 24–48 hours.
                 </p>
                 <button
-                  onClick={() => { setState('idle'); setForm({ name: '', email: '', subject: '', message: '' }); }}
-                  className="btn-outline"
+                  onClick={() => {
+                    setState('idle');
+                    setForm({ name: '', email: '', subject: '', message: '' });
+                  }}
+                  className="px-6 py-2.5 rounded font-display text-sm tracking-wider transition-all duration-300"
+                  style={{
+                    color: '#D4AF37',
+                    border: '1px solid rgba(212, 175, 55, 0.4)',
+                    background: 'transparent',
+                  }}
                 >
-                  Send Another
+                  Send Another Message
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-glass rounded-3xl p-8 border-gold-subtle shadow-glass space-y-6">
+              <form
+                onSubmit={handleSubmit}
+                className="rounded-xl p-8 space-y-6"
+                style={{
+                  background: 'rgba(58, 10, 21, 0.5)',
+                  border: '1px solid rgba(212, 175, 55, 0.15)',
+                  backdropFilter: 'blur(12px)',
+                }}
+              >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  {/* Name */}
                   <div className="space-y-2">
-                    <label className="font-josefin text-xs tracking-widest uppercase text-parchment-400">
-                      Your Name *
+                    <label
+                      className="font-display text-xs tracking-widest block"
+                      style={{ color: 'rgba(245, 240, 232, 0.5)' }}
+                    >
+                      YOUR NAME *
                     </label>
                     <input
                       type="text"
                       name="name"
                       value={form.name}
                       onChange={handleChange}
-                      placeholder="e.g. Arjun Sharma"
-                      className="input-base"
+                      placeholder="Full name"
                       required
+                      className="w-full px-4 py-3 rounded text-sm font-sans outline-none transition-all duration-200"
+                      style={{
+                        background: 'rgba(58, 10, 21, 0.6)',
+                        border: '1px solid rgba(212, 175, 55, 0.2)',
+                        color: 'rgba(245, 240, 232, 0.85)',
+                      }}
+                      onFocus={(e) => (e.target.style.borderColor = 'rgba(212,175,55,0.5)')}
+                      onBlur={(e) => (e.target.style.borderColor = 'rgba(212,175,55,0.2)')}
                     />
                   </div>
+
+                  {/* Email */}
                   <div className="space-y-2">
-                    <label className="font-josefin text-xs tracking-widest uppercase text-parchment-400">
-                      Email Address *
+                    <label
+                      className="font-display text-xs tracking-widest block"
+                      style={{ color: 'rgba(245, 240, 232, 0.5)' }}
+                    >
+                      EMAIL ADDRESS *
                     </label>
                     <input
                       type="email"
@@ -125,68 +227,103 @@ export default function ContactPage() {
                       value={form.email}
                       onChange={handleChange}
                       placeholder="you@example.com"
-                      className="input-base"
                       required
+                      className="w-full px-4 py-3 rounded text-sm font-sans outline-none transition-all duration-200"
+                      style={{
+                        background: 'rgba(58, 10, 21, 0.6)',
+                        border: '1px solid rgba(212, 175, 55, 0.2)',
+                        color: 'rgba(245, 240, 232, 0.85)',
+                      }}
+                      onFocus={(e) => (e.target.style.borderColor = 'rgba(212,175,55,0.5)')}
+                      onBlur={(e) => (e.target.style.borderColor = 'rgba(212,175,55,0.2)')}
                     />
                   </div>
                 </div>
 
+                {/* Subject */}
                 <div className="space-y-2">
-                  <label className="font-josefin text-xs tracking-widest uppercase text-parchment-400">
-                    Subject *
+                  <label
+                    className="font-display text-xs tracking-widest block"
+                    style={{ color: 'rgba(245, 240, 232, 0.5)' }}
+                  >
+                    SUBJECT *
                   </label>
                   <select
                     name="subject"
                     value={form.subject}
                     onChange={handleChange}
-                    className="input-base"
                     required
+                    className="w-full px-4 py-3 rounded text-sm font-sans outline-none transition-all duration-200 cursor-pointer"
+                    style={{
+                      background: 'rgba(58, 10, 21, 0.6)',
+                      border: '1px solid rgba(212, 175, 55, 0.2)',
+                      color: form.subject ? 'rgba(245, 240, 232, 0.85)' : 'rgba(245, 240, 232, 0.35)',
+                    }}
                   >
-                    <option value="">Select a subject</option>
-                    <option value="general">General Enquiry</option>
-                    <option value="collaboration">Collaboration / Partnership</option>
-                    <option value="research">Academic Research</option>
-                    <option value="bug">Bug Report / Feedback</option>
-                    <option value="ayurveda">Ayurvedic Content</option>
-                    <option value="other">Other</option>
+                    <option value="" disabled>Select a reason for contacting</option>
+                    <option value="issue">I&apos;m facing an issue on the platform</option>
+                    <option value="bug">Bug report or error</option>
+                    <option value="feature">Feature request</option>
+                    <option value="feedback">General feedback</option>
+                    <option value="partnership">Partnership or collaboration</option>
+                    <option value="other">Something else</option>
                   </select>
                 </div>
 
+                {/* Message */}
                 <div className="space-y-2">
-                  <label className="font-josefin text-xs tracking-widest uppercase text-parchment-400">
-                    Message *
+                  <label
+                    className="font-display text-xs tracking-widest block"
+                    style={{ color: 'rgba(245, 240, 232, 0.5)' }}
+                  >
+                    MESSAGE *
                   </label>
                   <textarea
                     name="message"
                     value={form.message}
                     onChange={handleChange}
-                    placeholder="Share your thoughts, questions, or feedback with us..."
+                    placeholder="Describe your issue, idea, or feedback in as much detail as possible..."
                     rows={6}
-                    className="input-base resize-none"
                     required
+                    className="w-full px-4 py-3 rounded text-sm font-sans outline-none transition-all duration-200 resize-none"
+                    style={{
+                      background: 'rgba(58, 10, 21, 0.6)',
+                      border: '1px solid rgba(212, 175, 55, 0.2)',
+                      color: 'rgba(245, 240, 232, 0.85)',
+                    }}
+                    onFocus={(e) => (e.target.style.borderColor = 'rgba(212,175,55,0.5)')}
+                    onBlur={(e) => (e.target.style.borderColor = 'rgba(212,175,55,0.2)')}
                   />
                 </div>
 
-                <Button
-                  type="submit"
-                  size="lg"
-                  loading={state === 'loading'}
-                  disabled={!isValid || state === 'loading'}
-                  className="w-full sm:w-auto"
-                >
-                  Send Message
-                </Button>
+                <div className="flex items-center justify-between gap-4 flex-wrap">
+                  <Button
+                    type="submit"
+                    size="lg"
+                    loading={state === 'loading'}
+                    disabled={!isValid || state === 'loading'}
+                  >
+                    Send Message
+                  </Button>
+                  <p className="font-sans text-xs" style={{ color: 'rgba(245, 240, 232, 0.3)' }}>
+                    We respond within 24–48 hours.
+                  </p>
+                </div>
               </form>
             )}
           </div>
         </div>
 
-        {/* Quote */}
+        {/* Closing quote */}
         <div className="mt-20 text-center">
-          <p className="font-cormorant italic text-2xl text-parchment-400">
+          <div className="section-divider mb-8" />
+          <p className="font-serif-body italic text-2xl" style={{ color: 'rgba(245, 240, 232, 0.45)' }}>
             &ldquo;Hitahitam sukham dukham, ayustasya hitahitam&rdquo;
           </p>
-          <p className="font-josefin text-xs tracking-[0.3em] uppercase text-parchment-600 mt-2">
+          <p
+            className="font-display text-xs tracking-widest mt-2"
+            style={{ color: 'rgba(245, 240, 232, 0.25)' }}
+          >
             Charaka Samhita — The Definition of Ayurveda
           </p>
         </div>

@@ -12,7 +12,7 @@ export default function HomePage() {
       <StepSection />
 
       {/* Dosha Section */}
-      <section className="py-24 relative bg-maroon-900/20">
+      <section className="py-10    relative bg-maroon-900/20">
         <div className="section-container">
           <div className="text-center mb-16 space-y-4">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-glass border-gold-subtle mb-4">
@@ -46,7 +46,7 @@ export default function HomePage() {
       </section>
 
       {/* Body Systems */}
-      <section className="py-24 relative">
+      <section className="py-10    relative">
         <div className="section-container">
           <div className="text-center mb-14 space-y-4">
             <h2 className="section-heading">100+ Conditions Across All Body Systems</h2>
@@ -95,7 +95,7 @@ export default function HomePage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 relative">
+      <section className="py-10    relative">
         <div className="section-container">
           <div className="bg-glass rounded-3xl p-12 border-gold-mid text-center relative overflow-hidden shadow-glass">
             <div className="absolute inset-0 mandala-bg opacity-50" />

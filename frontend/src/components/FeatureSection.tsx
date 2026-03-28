@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 
 export default function FeatureSection() {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-10    relative overflow-hidden">
       <div className="absolute inset-0 mandala-bg" />
 
       <div className="section-container relative z-10">

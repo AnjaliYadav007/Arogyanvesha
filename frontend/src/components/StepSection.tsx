@@ -27,7 +27,7 @@ const STEPS = [
 
 export default function StepSection() {
   return (
-    <section className="py-24 relative">
+    <section className="py-10    relative">
       {/* Divider */}
       <div className="section-container mb-16">
         <div className="flex items-center gap-6">
