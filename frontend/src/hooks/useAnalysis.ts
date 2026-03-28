@@ -14,7 +14,7 @@ interface UseAnalysisReturn {
 
 export function useAnalysis(): UseAnalysisReturn {
   const [result, setResult] = useState<AnalysisResult | null>(null);
-  const [loadingState, setLoadingState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [loadingState, setLoadingState] = useState<LoadingState>('idle');
   const [error, setError] = useState<string | null>(null);
 
   const analyze = useCallback(async (data: AnalysisFormData) => {
@@ -40,5 +40,5 @@ export function useAnalysis(): UseAnalysisReturn {
     setError(null);
   }, []);
 
-  return { result, loadingState, error, analyze, reset };
+return { result, loadingState, error, analyze, reset };
 }

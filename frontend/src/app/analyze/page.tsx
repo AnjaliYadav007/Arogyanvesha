@@ -6,11 +6,12 @@ import Loader from '@/components/Loader';
 import ResultCard from '@/components/ResultCard';
 import { useAnalysis } from '@/hooks/useAnalysis';
 import type { AnalysisFormData } from '@/types';
+import type { LoadingState } from '@/types';
 
 export default function AnalyzePage() {
   const router = useRouter();
   const { result, loadingState, error, analyze, reset } = useAnalysis();
-
+   const currentState: LoadingState = loadingState;
   const handleSubmit = async (data: AnalysisFormData) => {
     await analyze(data);
     // TODO: Store result in session/state for /result page
@@ -87,7 +88,7 @@ export default function AnalyzePage() {
             <div className="bg-glass rounded-3xl p-8 md:p-12 border-gold-subtle shadow-glass">
               <SymptomForm
                 onSubmit={handleSubmit}
-                loading={loadingState === 'loading'}
+                loading={currentState === 'loading'}
               />
             </div>
           </div>
