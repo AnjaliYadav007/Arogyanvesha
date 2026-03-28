@@ -49,7 +49,7 @@ export default function AboutPage() {
             </p>
             <p className="font-cormorant text-parchment-500 text-base leading-relaxed">
               Arogyanvesha envisions being the global digital gateway to Ayurvedic intelligence — preserving
-              India's greatest medical heritage while propelling it into the age of AI.
+              India&apos;s greatest medical heritage while propelling it into the age of AI.
             </p>
           </div>
         </div>
