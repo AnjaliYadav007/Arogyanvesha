@@ -14,7 +14,7 @@ interface UseAnalysisReturn {
 
 export function useAnalysis(): UseAnalysisReturn {
   const [result, setResult] = useState<AnalysisResult | null>(null);
-  const [loadingState, setLoadingState] = useState<LoadingState>('idle');
+const [loadingState, setLoadingState] = useState<'idle' | 'loading'>('idle');
   const [error, setError] = useState<string | null>(null);
 
   const analyze = useCallback(async (data: AnalysisFormData) => {
