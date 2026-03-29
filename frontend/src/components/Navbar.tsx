@@ -56,7 +56,7 @@ export default function Navbar() {
         >
           <div className="relative w-10 h-10 rounded-full overflow-hidden border border-yellow-600/70 flex-shrink-0 bg-[#3A0A15]">
             <Image
-              src="/images/Arogyanvesha.jpeg"
+              src="/images/Arogyanvesha.png"
               alt=""
               fill
               className="object-contain scale-110"
