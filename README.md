@@ -85,9 +85,9 @@ Arogyanvesha/
 ## 👥 Team
 
 - **Harshvardhan Singh** (2305251540026) — Project Lead & Backend
-- **Ankita Kumari Singh** (2305251540016) — Frontend Development
+- **Anjali Yadav** (2305251540015) — Frontend Development
 - **Gaurav Mishra** (2305251540024) — AI/ML Engineering
-- **Anjali Yadav** (2305251540015) — Data Engineering & QA
+-  **Ankita Kumari Singh**— Data Engineering & QA
 
 **Supervisor**: Mr. Anurag Tripathi, Assistant Professor
 
